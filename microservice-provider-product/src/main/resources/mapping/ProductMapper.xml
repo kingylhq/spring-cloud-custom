@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lq.mapper.IProductMapper">
+
+    <!-- 根据主键查询-->
+    <select id="findById" resultType="com.lq.vo.Product" parameterType="long">
+        select id, product_name as productName, product_desc as productDesc from product WHERE id = #{id}
+    </select>
+
+    <!-- 查询所有-->
+    <select id="findAll" resultType="com.lq.vo.Product">
+        SELECT id, product_name as productName, product_desc as productDesc from product
+    </select>
+
+    <!-- 添加 -->
+    <insert id="create" parameterType="com.lq.vo.Product">
+        INSERT INTO product(product_name,product_desc) VALUES (#{productName}, #{productDesc})
+    </insert>
+
+</mapper>

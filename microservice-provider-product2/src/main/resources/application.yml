@@ -1,0 +1,50 @@
+server:
+  port: 8082
+mybatis:
+  mapper-locations: # 所有的mapper映射文件
+    - classpath:mapping/*.xml
+spring:
+  application:
+    # 为eureka注册的时候显示一个名字，如果不写，显示UNKNOW，可以看下底层源码
+    name: microservice-provider-product2
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 配置当前要使用的数据源的操作类型
+    driver-class-name: com.mysql.jdbc.Driver # 配置MySQL的驱动程序类
+    url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC # 数据库连接地址
+    username: root # 数据库用户名
+    password: 123456 # 数据库连接密码
+
+  # 进行安全验证配置，如果有很多个消费者，这样配置伤神费力，自己测试可以这么搞，一步一个坑，一个脚板印
+#  security:
+#    user:
+#      name: admin
+#      password: admin
+#      roles:
+#        - User
+
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      # 这里eureka增加了安全机制，需要账户名和密码才可以访问并进行注册、单机部署
+#      defaultZone: http://liqian:liqian@${eureka.host:127.0.0.1}:${eureka.port:8761}/eureka/
+
+      # 注册到Eureka多台注册中心上、集群eureka
+      defaultZone: http://lq:lq@eureka8761:8761/eureka,http://lq:lq@eureka8762:8762/eureka,http://lq:lq@eureka8763:8763/eureka
+  instance:
+    prefer-ip-address: true
+    appname: microservice-provider-product2
+    lease-renewal-interval-in-seconds: 15     # 设置心跳的时间间隔（默认是30秒）
+    # 如果现在超过了5秒的间隔（默认是90秒）表示上一次发送心跳检查之后等待下一次发送心跳检查的时间，如果超过此时间，
+    # Eureka则认为此服务挂掉
+    lease-expiration-duration-in-seconds: 20
+
+logging:
+  level:
+    com.lq.mapper: debug
+
+# actuator健康检查  使用了$要报错，新增maven-resources-plugin插件支持，
+info:
+  app.name: microservice-provider-product2
+  company.name: liqian
+  build.artifactId: $project.artifactId$
+  build.modelVersion: $project.modelVersion$

@@ -1,8 +1,6 @@
 package com.lq.controller;
 
-import com.lq.vo.Product;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping(value = "/consumer/loadbalanced")
-public class ConsumerLoadBalancedController {
+public class ConsumerLoadBalancedRibbonController {
 
     // 这样的方式是服务消费方直接 从 eureka 服务列表拉取可用服务到本地，然后进行调用，调用方法： 服务方的名称/方法
     // 这个值对应配置文件的值

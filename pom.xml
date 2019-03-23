@@ -12,10 +12,13 @@
     <modules>
         <module>microservice-api</module>
         <module>microservice-consumer</module>
+        <module>microservice-consumer-ribbon</module>
         <module>microservice-eureka</module>
         <module>microservice-eureka2</module>
         <module>microservice-eureka3</module>
         <module>microservice-provider-product</module>
+        <module>microservice-provider-product2</module>
+        <module>microservice-provider-product3</module>
         <module>microservice-security</module>
     </modules>
 

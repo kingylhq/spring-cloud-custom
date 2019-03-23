@@ -1,0 +1,11 @@
+server:
+  port: 8002
+
+ribbon:
+  eureka:
+    enabled: false
+
+microservice-provider-product-ribbon:
+  ribbon:
+    listOfServers: http://localhost:8080,http://localhost:8082,http://localhost:8083
+

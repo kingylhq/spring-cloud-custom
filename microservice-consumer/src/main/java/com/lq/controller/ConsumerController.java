@@ -25,6 +25,7 @@ import java.util.List;
 @RequestMapping(value = "/consumer")
 public class ConsumerController {
 
+    // 这样的方式是服务消费方直接 从 服务提供方 调用服务，中间没有经过eureka 这层
     public static final String PRODUCT_GET_URL = "http://localhost:8080/product/get/";
     public static final String PRODUCT_LIST_URL="http://localhost:8080/product/list/";
     public static final String PRODUCT_ADD_URL = "http://localhost:8080/product/add/";

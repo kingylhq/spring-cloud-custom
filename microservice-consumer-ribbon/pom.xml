@@ -9,9 +9,9 @@
     </parent>
 
     <groupId>com.lq</groupId>
-    <artifactId>microservice-consumer</artifactId>
+    <artifactId>microservice-consumer-ribbon</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>ConsumerApplication</name>
+    <name>ConsumerRibbonApplication</name>
 
     <!-- 编码格式 -->
     <properties>
@@ -40,14 +40,13 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <!-- 将调用方(消费者) 也注册到eureka-->
+        <!--  加入springcloud ribbon负载均衡 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>2.1.1.RELEASE</version>
+            <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
         </dependency>
     </dependencies>
 

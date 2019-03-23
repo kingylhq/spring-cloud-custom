@@ -6,7 +6,8 @@ mybatis:
 spring:
   application:
     # 为eureka注册的时候显示一个名字，如果不写，显示UNKNOW，可以看下底层源码
-    name: microservice-provider-product2
+    # 负载均衡的时候这个地方的 三个项目必须一样，服务id相同，则才是同一个服务进行负载
+    name: microservice-provider-product
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource # 配置当前要使用的数据源的操作类型
     driver-class-name: com.mysql.jdbc.Driver # 配置MySQL的驱动程序类

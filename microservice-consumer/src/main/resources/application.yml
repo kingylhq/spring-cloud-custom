@@ -1,3 +1,21 @@
 server:
   port: 8001
 
+eureka:
+  client: # 客户端进行Eureka注册的配置
+    service-url:
+      # 这里eureka增加了安全机制，需要账户名和密码才可以访问并进行注册、单机部署
+      #      defaultZone: http://liqian:liqian@${eureka.host:127.0.0.1}:${eureka.port:8761}/eureka/
+
+      # 注册到Eureka多台注册中心上、集群eureka
+      defaultZone: http://lq:lq@eureka8761:8761/eureka,http://lq:lq@eureka8762:8762/eureka,http://lq:lq@eureka8763:8763/eureka
+    # 服务消费方不需要注册到 eureka，只需要从eureka拉取服务方的可用服务到本地即可，因此：register-with-eureka: false
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+    appname: microservice-consumer
+    lease-renewal-interval-in-seconds: 15     # 设置心跳的时间间隔（默认是30秒）
+    # 如果现在超过了5秒的间隔（默认是90秒）表示上一次发送心跳检查之后等待下一次发送心跳检查的时间，如果超过此时间，
+    # Eureka则认为此服务挂掉
+    lease-expiration-duration-in-seconds: 20
+

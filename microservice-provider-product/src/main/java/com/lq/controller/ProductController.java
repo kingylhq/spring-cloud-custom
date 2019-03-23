@@ -27,7 +27,6 @@ import javax.annotation.Resource;
 public class ProductController {
 
     @Resource
-            @Autowired
     IProductService productService;
 
     // import org.springframework.cloud.client.discovery.DiscoveryClient; 这个包下面的类

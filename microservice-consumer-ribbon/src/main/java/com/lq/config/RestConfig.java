@@ -24,7 +24,8 @@ import java.util.Base64;
 public class RestConfig {
 
     @Bean
-    @LoadBalanced
+    // 用springcloud ribbon 的方式就需要注释掉 @LoadBalanced
+//    @LoadBalanced
     public RestTemplate restTemplate() {
         return new RestTemplate();
     }
